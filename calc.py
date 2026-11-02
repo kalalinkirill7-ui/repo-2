@@ -48,7 +48,7 @@ def main():
                 item["revenue"] += int(row["quantity"]) * int(row["price"])
 
     with open(DST, "w", encoding="utf-8", newline="") as f:
-        w = csv.writer(f)
+        w = csv.writer(f, lineterminator="\n")
         w.writerow(["sku", "order_date", "orders", "revenue"])
         for (sku, date) in sorted(stats):
             w.writerow([sku, date, stats[(sku, date)]["orders"], stats[(sku, date)]["revenue"]])
